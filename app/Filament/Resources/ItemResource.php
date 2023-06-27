@@ -40,7 +40,7 @@ class ItemResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('item_category.name'),
+                Tables\Columns\TextColumn::make('item_category.name')->label('Item')->sortable(),
                 Tables\Columns\TextColumn::make('model'),
                 Tables\Columns\TextColumn::make('description')->html(),
                 Tables\Columns\TextColumn::make('serial_number')->searchable(),
