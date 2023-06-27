@@ -43,7 +43,7 @@ class ItemResource extends Resource
                 Tables\Columns\TextColumn::make('item_category.name'),
                 Tables\Columns\TextColumn::make('model'),
                 Tables\Columns\TextColumn::make('description')->html(),
-                Tables\Columns\TextColumn::make('serial_number'),
+                Tables\Columns\TextColumn::make('serial_number')->searchable(),
             ])
             ->filters([
                 //
