@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StaffResource\Pages;
 use App\Filament\Resources\StaffResource\RelationManagers;
+use App\Models\Allocation;
+use App\Models\Item;
 use App\Models\Office;
 use App\Models\Staff;
 use Filament\Forms;

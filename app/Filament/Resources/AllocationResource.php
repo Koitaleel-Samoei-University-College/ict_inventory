@@ -40,7 +40,7 @@ class AllocationResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('item_id')
                     ->label('Item Name')
-                    ->options(Item::all()->pluck('model', 'id'))
+                    ->options(static::getAvailableItems()->pluck('model', 'id'))
                     ->searchable()
                     ->required(),
                 Hidden::make('user_id')->default(auth()->id()),
@@ -84,5 +84,13 @@ class AllocationResource extends Resource
             'create' => Pages\CreateAllocation::route('/create'),
             'edit' => Pages\EditAllocation::route('/{record}/edit'),
         ];
+    }
+
+    public static function getAvailableItems()
+    {
+        $allocatedItemIds = Allocation::pluck('item_id')->toArray();
+
+        // Query for items that have not been allocated
+        return Item::whereNotIn('id', $allocatedItemIds)->get();
     }
 }
