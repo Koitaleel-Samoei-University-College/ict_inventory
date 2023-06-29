@@ -51,9 +51,9 @@ class AllocationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('staff_id'),
-                Tables\Columns\TextColumn::make('office_id'),
-                Tables\Columns\TextColumn::make('item_id'),
+                Tables\Columns\TextColumn::make('staff.name'),
+                Tables\Columns\TextColumn::make('office.name'),
+                Tables\Columns\TextColumn::make('item.model'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

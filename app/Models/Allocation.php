@@ -13,7 +13,7 @@ class Allocation extends Model
 
     public function office(): BelongsTo
     {
-        return $this->belongsTo(Ofiice::class);
+        return $this->belongsTo(Office::class);
     }
     public function staff(): BelongsTo
     {
