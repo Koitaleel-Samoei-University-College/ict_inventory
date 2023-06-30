@@ -54,10 +54,8 @@ class AllocationResource extends Resource
                 Tables\Columns\TextColumn::make('staff.name'),
                 Tables\Columns\TextColumn::make('office.name'),
                 Tables\Columns\TextColumn::make('item.model'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('user.name')->label('Issued By'),
+
             ])
             ->filters([
                 //
