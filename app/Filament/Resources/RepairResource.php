@@ -29,9 +29,10 @@ class RepairResource extends Resource
                 Hidden::make('user_id')->default(auth()->id()),
 
                 Forms\Components\Select::make('item_id')
-                    ->label('Item/Device')
-                    ->options(Item::all()->pluck('model', 'id'))
-                    ->searchable(),
+                    ->label('Item Name')
+                    ->options(static::getAvailableItems()->pluck('model', 'id'))
+                    ->searchable()
+                    ->required(),
                 Forms\Components\RichEditor::make('description')
                     ->required()
                     ->maxLength(65535),
@@ -83,5 +84,13 @@ class RepairResource extends Resource
             'create' => Pages\CreateRepair::route('/create'),
             'edit' => Pages\EditRepair::route('/{record}/edit'),
         ];
+    }
+
+    public static function getAvailableItems()
+    {
+        $repairItemIds = Repair::pluck('item_id')->toArray();
+
+        // Query for items that have not been in repair
+        return Item::whereNotIn('id', $repairItemIds)->get();
     }
 }
